@@ -2234,7 +2234,8 @@ class Problem(SageObject):
             very_small_types = []
             for ti in self._active_types:
                 if self._exact_Qdash_matrices[ti].nrows() > 0:
-                    eigvals = sorted(numpy.linalg.eigvalsh(self._exact_Qdash_matrices[ti]))
+                    eigvals = sorted(self._exact_Qdash_matrices[ti].eigenvalues())
+                    # eigvals = sorted(numpy.linalg.eigvalsh(self._exact_Qdash_matrices[ti]))
                     if eigvals[0] < 0.0:
                         negative_types.append(ti)
                     elif eigvals[0] < 1e-6:
